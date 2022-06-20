@@ -1,6 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * File Decryptor Class
+ *
+ * For decrypting file with PHP OpenSSL extensions (AES-128-CBC)
+ *
+ * @package		File Encryptor
+ * @subpackage	Libraries
+ * @category	Libraries
+ * @author		Muhammad Ridwan Na'im
+ * @link		https://muhammadridwannaim.epizy.com
+*/
 class File_decryptor
 {
 	/**
@@ -31,6 +42,10 @@ class File_decryptor
 	 **/
 	private $real_ext = '';
 
+	/**
+	 * Decrypted file result
+	 * @var string
+	*/
 	private $decrypted_file;
 
 	/**
@@ -47,7 +62,11 @@ class File_decryptor
 	 **/
 	private $msg_result = [];
 
-	protected $ci;
+	/**
+	 * CI Instance
+	 * @var object
+	*/
+	protected $_CI;
 
 	/**
 	 * Constructor
@@ -125,11 +144,10 @@ class File_decryptor
 	}
 
 	/**
-	 * Encrypt the file and saves the result in a new file with $_ext_enc as suffix.
+	 * Encrypt the file and saves the result in a new file with $enc_ext as suffix.
+	 * @return true|void  Returns true if success, void if failed
 	 * 
-	 * @return string|false  Returns the file name that has been created or FALSE if an error occured
-	 * 
-	 **/
+	*/
     public function decrypt()
     {
     	$key = substr(sha1($this->key, true), 0, 16);
@@ -168,11 +186,21 @@ class File_decryptor
 	    }
     }
 
+    /**
+     * Get Decrypted File
+     * @return string [full path of decrypted file]
+     * 
+    */
     public function result()
     {
     	return $this->decrypted_file;
     }
 
+    /**
+     * Display Message
+     * @return string [message list]
+     * 
+    */
     public function show_result()
     {
     	return implode('<br/>', $this->msg_result);

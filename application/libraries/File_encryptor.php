@@ -1,6 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * File Encryptor Class
+ *
+ * For encrypting file with PHP OpenSSL extensions (AES-128-CBC)
+ *
+ * @package		File Encryptor
+ * @subpackage	Libraries
+ * @category	Libraries
+ * @author		Muhammad Ridwan Na'im
+ * @link		https://muhammadridwannaim.epizy.com
+*/
 class File_encryptor
 {
 	/**
@@ -45,7 +56,11 @@ class File_encryptor
 	 **/
 	private $msg_result = [];
 
-	protected $ci;
+	/**
+	 * CI Instance
+	 * @var object
+	*/
+	protected $_CI;
 
 	/**
 	 * Constructor
@@ -123,11 +138,10 @@ class File_encryptor
 	}
 
 	/**
-	 * Encrypt the file and saves the result in a new file with $_ext_enc as suffix.
+	 * Encrypt the file and saves the result in a new file with $enc_ext as suffix.
+	 * @return true|void  Returns true if success, void if failed
 	 * 
-	 * @return string|false  Returns the file name that has been created or FALSE if an error occured
-	 * 
-	 **/
+	*/
     public function encrypt()
     {
     	$key 	= substr(sha1($this->key, true), 0, 16);
@@ -169,11 +183,21 @@ class File_encryptor
 	    }
     }
 
+    /**
+     * Get Encrypted File
+     * @return string [full path of encrypted file]
+     * 
+    */
     public function result()
     {
     	return $this->src_file.$this->real_ext.'.'.$this->enc_ext;
     }
 
+    /**
+     * Display Message
+     * @return string [message list]
+     * 
+    */
     public function show_result()
     {
     	return implode('<br/>', $this->msg_result);
