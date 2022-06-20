@@ -32,17 +32,17 @@ RewriteRule ^(.*)$ index.php/$1 [L]
 Lalu cek kembali file `index.php` sesuaikan nilai variabel berikut sesuai kebutuhan anda.
 
 ```
-	// App directory configuration
-	// If your application not in webroot, you can set application directory here
-	// BEGIN WITH SLASH, NO TRAILING SLASH!
-	$webdir  = '/file-encryptor';
+// App directory configuration
+// If your application not in webroot, you can set application directory here
+// BEGIN WITH SLASH, NO TRAILING SLASH!
+$webdir  = '/file-encryptor';
 
-	// Application port configuration
-	// If you want to run this application in different port, put your custom port here
-	// begin with :
-	// Example : ':8443'
-	// Default is false or use 80/443
-	$port = false;
+// Application port configuration
+// If you want to run this application in different port, put your custom port here
+// begin with :
+// Example : ':8443'
+// Default is false or use 80/443
+$port = false;
 ```
 
 ## Kanal Laporan Bug
